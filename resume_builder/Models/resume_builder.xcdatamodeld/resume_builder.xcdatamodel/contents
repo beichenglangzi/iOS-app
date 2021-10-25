@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D91" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Category" representedClassName="Category" syncable="YES" codeGenerationType="class">
+        <attribute name="arrayPosition" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <relationship name="detail" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Detail" inverseName="category" inverseEntity="Detail"/>
+        <relationship name="resume" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Resume" inverseName="categories" inverseEntity="Resume"/>
+    </entity>
+    <entity name="Detail" representedClassName="Detail" syncable="YES" codeGenerationType="class">
+        <attribute name="arrayPosition" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="date" optional="YES" attributeType="String"/>
+        <attribute name="descriptor" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="detail" inverseEntity="Category"/>
+        <relationship name="resume" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Resume" inverseName="details" inverseEntity="Resume"/>
+    </entity>
+    <entity name="Resume" representedClassName="Resume" syncable="YES" codeGenerationType="class">
+        <attribute name="arrayPosition" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="date" optional="YES" attributeType="String"/>
+        <attribute name="emailAddress" optional="YES" attributeType="String"/>
+        <attribute name="homeAddress" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="phoneNumber" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="categories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Category" inverseName="resume" inverseEntity="Category"/>
+        <relationship name="details" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Detail" inverseName="resume" inverseEntity="Detail"/>
+        <relationship name="resumeGroup" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ResumeGroup" inverseName="resume" inverseEntity="ResumeGroup"/>
+    </entity>
+    <entity name="ResumeGroup" representedClassName="ResumeGroup" syncable="YES" codeGenerationType="class">
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="resume" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Resume" inverseName="resumeGroup" inverseEntity="Resume"/>
+    </entity>
+    <elements>
+        <element name="Category" positionX="-54" positionY="-9" width="128" height="104"/>
+        <element name="Detail" positionX="-54" positionY="9" width="128" height="119"/>
+        <element name="Resume" positionX="-54" positionY="-9" width="128" height="179"/>
+        <element name="ResumeGroup" positionX="-36" positionY="72" width="128" height="59"/>
+    </elements>
+</model>
